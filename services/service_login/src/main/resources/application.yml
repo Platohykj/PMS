@@ -1,0 +1,13 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: service_login
+  cloud:
+    nacos:
+      server-addr: 192.168.0.133:8848
+
+
+  config:
+    import:
+        - nacos:service_login.properties
