@@ -46,3 +46,23 @@ spring:
           uri: lb://service-titleapi
           predicates:
             - Path=/api/title/**
+        - id: Hrapi-route
+          uri: lb://service-hrapi
+          predicates:
+            - Path=/api/hr/**
+        - id: Salarysetapi-route
+          uri: lb://service-salarysetapi
+          predicates:
+            - Path=/api/salaryset/**
+        - id: Login-route
+          uri: lb://service-login
+          predicates:
+            - Path=/auth/login
+        - id: Register-route
+          uri: lb://service-register
+          predicates:
+            - Path=/auth/register
+        - id: Salaryapi-route
+          uri: lb://service-salaryapi
+          predicates:
+            - Path=/api/salary/**

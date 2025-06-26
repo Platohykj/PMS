@@ -6,6 +6,8 @@ import org.example.response.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/db/employee")
 public class EmployeeController {
@@ -61,5 +63,26 @@ public class EmployeeController {
     public Response<?> removeTitle(@RequestParam("jobId") String jobId) {
         employeeService.removeTitle(jobId);
         return Response.newSuccess(null, "Title removed successfully");
+    }
+
+    @PostMapping("/updatedepartment")
+    public Response<?> updateDepartment(@RequestParam("jobId") String jobId, @RequestParam("department") String department) {
+        employeeService.updateDepartment(jobId, department);
+        return Response.newSuccess(null, "Department updated successfully");
+    }
+
+    @PostMapping("/updatesubdepartment")
+    public Response<?> updateSubDepartment(@RequestParam("jobId") String jobId, @RequestParam("subDepartment") String subDepartment) {
+        Employee employee = employeeService.getEmployeeByjobId(jobId);
+        if (employee == null) {
+            return Response.newError(404, "Employee not found");
+        }
+        employee.setSubDepartment(subDepartment);
+        employeeService.updateEmployee(employee);
+        return Response.newSuccess(null, "Sub-department updated successfully");
+    }
+    @GetMapping("/getjobidlistbydepartment")
+    public List<String> getJobIdListByDepartment(@RequestParam("department") String department) {
+        return employeeService.getjobidByDepartment(department);
     }
 }

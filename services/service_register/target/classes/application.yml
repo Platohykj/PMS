@@ -1,5 +1,5 @@
 server:
-  port: 7000
+  port: 7040
 spring:
   application:
     name: service-register

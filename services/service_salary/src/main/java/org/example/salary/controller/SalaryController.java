@@ -8,6 +8,7 @@ import org.example.salary.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -15,6 +16,18 @@ import java.util.List;
 public class SalaryController {
     @Autowired
     private SalaryService salaryService;
+
+    @PostMapping("/updatebasesalary")
+    public Response<?> updateBaseSalary(@RequestParam String jobId, @RequestParam double baseSalary) {
+        Salary salary = salaryService.getSalaryByJobId(jobId).stream().findFirst().orElse(null);
+        if (salary != null) {
+            salary.setBaseSalary(BigDecimal.valueOf(baseSalary));
+            salaryService.updateSalary(salary);
+            return Response.newSuccess(salary, "Base salary updated successfully");
+        } else {
+            return Response.newError(404, "No salary found for the given job ID");
+        }
+    }
 
     @PostMapping("/addsalary")
     public Response<?> addSalary(@RequestBody Salary salary) {
@@ -38,5 +51,10 @@ public class SalaryController {
         } else {
             return Response.newError(404, "No salaries found");
         }
+    }
+    @PutMapping("/update")
+    public Response<?> updateSalary(@RequestBody Salary salary) {
+        salaryService.updateSalary(salary);
+        return Response.newSuccess(salary, "Salary updated successfully");
     }
 }

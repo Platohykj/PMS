@@ -122,4 +122,25 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setTitle_id(null);
         employeeRepository.save(employee);
     }
+
+    @Override
+    public void updateDepartment(String jobId, String department) {
+        Employee employee = employeeRepository.findByJobId(jobId);
+        if (employee == null) {
+            throw new RuntimeException("Employee with jobId: " + jobId + " not found");
+        }
+        employee.setDepartment(department);
+        employeeRepository.save(employee);
+    }
+
+    @Override
+    public List<String> getjobidByDepartment(String department) {
+        List<Employee> employees = employeeRepository.findByDepartment(department);
+        if (employees.isEmpty()) {
+            throw new RuntimeException("No employees found in department: " + department);
+        }
+        return employees.stream()
+                .map(Employee::getJobId)
+                .toList();
+    }
 }

@@ -24,6 +24,10 @@
         <module>service_positionapi</module>
         <module>service_titleapi</module>
         <module>service_hrapi</module>
+        <module>service_salarysetapi</module>
+        <module>service_login</module>
+        <module>service_salaryapi</module>
+
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -75,6 +79,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
 
     </dependencies>

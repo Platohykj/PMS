@@ -38,4 +38,9 @@ public class SalaryServiceImpl implements SalaryService {
         }
     }
 
+    @Override
+    public void updateSalary(Salary salary) {
+        salaryRepository.save(salary);
+    }
+
 }

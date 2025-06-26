@@ -55,4 +55,13 @@ public class SalarysetServiceImpl implements SalarysetService {
         }
         salarysetRepository.deleteById(id);
     }
+
+    @Override
+    public SalarySet getSalarySetById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Salary set ID cannot be null");
+        }
+        return salarysetRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Salary set with ID " + id + " does not exist"));
+    }
 }

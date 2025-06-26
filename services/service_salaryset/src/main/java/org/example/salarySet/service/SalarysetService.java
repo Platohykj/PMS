@@ -14,4 +14,6 @@ public interface SalarysetService {
     void updateSalarySet(SalarySet salarySet);
 
     void deleteSalarySet(Long id);
+
+    SalarySet getSalarySetById(Long id);
 }

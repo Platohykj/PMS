@@ -13,4 +13,6 @@ public interface SalaryService {
     List<Salary> getSalaryByJobId(String jobId);
 
     List<Salary> getAllSalaries();
+
+    void updateSalary(Salary salary);
 }

@@ -50,7 +50,7 @@ public class TitleapiController {
         return Response.newSuccess(null, "Successfully deleted title with ID: " + id);
     }
 
-    @GetMapping("/employees")
+    @PostMapping("/employees")
     public Response<?> getEmployeesByTitle(@RequestBody EmployleesRequest employleesRequest) {
         // Assuming there's a method in the service to get employees by title
         List<EmployeeResponse> employees = titleapiService.getEmployeesByDepartment(employleesRequest);

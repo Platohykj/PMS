@@ -28,4 +28,8 @@ public interface EmployeeService {
     void updateTitleId(String jobId, Long titleId);
 
     void removeTitle(String jobId);
+
+    void updateDepartment(String jobId, String department);
+
+    List<String> getjobidByDepartment(String department);
 }

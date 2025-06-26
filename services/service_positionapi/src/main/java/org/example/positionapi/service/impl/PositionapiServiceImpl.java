@@ -68,15 +68,19 @@ public class PositionapiServiceImpl implements PositionapiService {
         }
         for (EmployeesRespose employeesRespose : employeesResposes) {
             Long positionId = employeesRespose.getPositionId();
-            Object r = positionFeignClient.getPositionById(positionId).getContent();
-            System.out.println(r);
-            System.out.println("class: " + r.getClass());
-            try {
-                List<Map<String, Object>> result = objectMapper.convertValue(r, new TypeReference<List<Map<String, Object>>>() {});
-                String name = result.get(0).get("name").toString();
-                employeesRespose.setPosition(name);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to parse position for employee with id: " + employeesRespose.getJobId(), e);
+            if (positionId != null) {
+                Object r = positionFeignClient.getPositionById(positionId).getContent();
+                System.out.println(r);
+                System.out.println("class: " + r.getClass());
+                try {
+                    List<Map<String, Object>> result = objectMapper.convertValue(r, new TypeReference<List<Map<String, Object>>>() {});
+                    String name = result.get(0).get("name").toString();
+                    employeesRespose.setPosition(name);
+                } catch (Exception e) {
+                    throw new RuntimeException("Failed to parse position for employee with id: " + employeesRespose.getJobId(), e);
+                }
+            }else {
+                employeesRespose.setPosition("无");
             }
         }
         return employeesResposes;

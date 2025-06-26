@@ -52,4 +52,18 @@ public class SalarysetController {
         }
     }
 
+    @GetMapping("/getsalarysetbyid")
+    public Response<?> getSalarySetById(@RequestParam Long id) {
+        try {
+            SalarySet salarySet = salarysetService.getSalarySetById(id);
+            if (salarySet != null) {
+                return Response.newSuccess(salarySet, "Salary set retrieved successfully");
+            } else {
+                return Response.newError(HttpStatus.NOT_FOUND.value(), "Salary set not found");
+            }
+        } catch (Exception e) {
+            return Response.newError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Failed to retrieve salary set: " + e.getMessage());
+        }
+    }
+
 }

@@ -14,4 +14,6 @@ public interface UserService {
     void deleteUserById(Long id);
 
     List<User> getAllUsers();
+
+    User authenticate(String username, String password);
 }

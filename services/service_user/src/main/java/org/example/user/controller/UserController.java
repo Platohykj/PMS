@@ -71,4 +71,29 @@ public class UserController {
         userService.deleteUserById(id);
         return Response.newSuccess(null, "User deleted successfully");
     }
+    @PostMapping("/login")
+    public User login(@RequestParam String username, @RequestParam String password) {
+        // Assuming userService has a method to validate user credentials
+        User authenticatedUser = userService.authenticate(username, password);
+        if (authenticatedUser != null) {
+            return authenticatedUser; // Return the authenticated user
+        } else {
+            throw new RuntimeException("Invalid username or password");
+        }
+    }
+    @PostMapping("/register")
+    public Response<?> register(@RequestParam String username, @RequestParam String password) {
+        if (username == null || password == null) {
+            return Response.newError(HttpStatus.BAD_REQUEST.value(), "Username and password are required");
+        }
+        User existingUser = userService.getUserByUsername(username);
+        if (existingUser != null) {
+            return Response.newError(HttpStatus.CONFLICT.value(), "Username already exists");
+        }
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setPassword(password);
+        User createdUser = userService.addUser(newUser);
+        return Response.newSuccess(createdUser, "User registered successfully");
+    }
 }
