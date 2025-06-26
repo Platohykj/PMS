@@ -1,10 +1,27 @@
 server:
   port: 80
+
 spring:
-  profiles:
-    include: route
   application:
     name: gateway
+  profiles:
+    include: route
   cloud:
     nacos:
       server-addr: 192.168.0.133:8848
+
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOriginPatterns: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
+              - OPTIONS
+              - HEAD
+            allowedHeaders: "*"
+            allowCredentials: true

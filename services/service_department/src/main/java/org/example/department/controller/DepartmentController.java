@@ -38,5 +38,24 @@ public class DepartmentController {
         departmentService.deleteDepartment(department);
         return Response.newSuccess(null, "Department deleted successfully");
     }
+    @GetMapping("/getalldepartments")
+    public Response<?> getAllDepartments() {
+        return Response.newSuccess(departmentService.getAllDepartments(), "All departments retrieved successfully");
+    }
 
+    @DeleteMapping("/deleteParentDepartment")
+    public Response<?> deleteParentDepartment(@RequestParam String parentDepartmentName) {
+        departmentService.deleteParentDepartment(parentDepartmentName);
+        return Response.newSuccess(null, "Parent department deleted successfully");
+    }
+
+    @GetMapping("/getallparentDepartment")
+    public Response<?> getAllParentDepartments() {
+        return Response.newSuccess(departmentService.getAllParentDepartments(), "All parent departments retrieved successfully");
+    }
+
+    @GetMapping("/getSubDepartmentsByParentName")
+    public Response<?> getSubDepartmentsByParentName(@RequestParam String parentDepartmentName) {
+        return Response.newSuccess(departmentService.getSubDepartmentsByParentName(parentDepartmentName), "Sub-departments retrieved successfully");
+    }
 }

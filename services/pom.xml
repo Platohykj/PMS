@@ -20,6 +20,10 @@
         <module>service_salary</module>
         <module>service_salaryset</module>
         <module>service_title</module>
+        <module>service_departmentapi</module>
+        <module>service_positionapi</module>
+        <module>service_titleapi</module>
+        <module>service_hrapi</module>
     </modules>
     <dependencyManagement>
         <dependencies>

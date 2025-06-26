@@ -60,4 +60,66 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void updateEmployee(Employee employee) {
         employeeRepository.save(employee);
     }
+
+    @Override
+    public void clearSubDepartment(String subdepartment) {
+        // 查找所有subdepartment为指定值的员工
+        List<Employee> employees = employeeRepository.findAll();
+        if (employees.isEmpty()) {
+            throw new RuntimeException("No employees found in subdepartment: " + subdepartment);
+        }
+        for (Employee employee : employees) {
+            if (subdepartment.equals(employee.getSubDepartment())) {
+                // 清除subdepartment字段
+                employee.setSubDepartment(null);
+                employeeRepository.save(employee);
+            }
+        }
+    }
+
+    @Override
+    public void clearParentDepartments(String parentDepartment) {
+        // 查找所有parentDepartment为指定值的员工
+        List<Employee> employees = employeeRepository.findAll();
+        if (employees.isEmpty()) {
+            throw new RuntimeException("No employees found in parent department: " + parentDepartment);
+        }
+        for (Employee employee : employees) {
+            if (parentDepartment.equals(employee.getDepartment())) {
+                // 清除parentDepartment字段
+                employee.setDepartment(null);
+                employee.setSubDepartment(null);
+                employeeRepository.save(employee);
+            }
+        }
+    }
+
+    @Override
+    public List<Employee> getEmployeeByDepartment(String department) {
+        List<Employee> employees = employeeRepository.findByDepartment(department);
+        if (employees.isEmpty()) {
+            throw new RuntimeException("No employees found in department: " + department);
+        }
+        return employees;
+    }
+
+    @Override
+    public void updateTitleId(String jobId, Long titleId) {
+        Employee employee = employeeRepository.findByJobId(jobId);
+        if (employee == null) {
+            throw new RuntimeException("Employee with jobId: " + jobId + " not found");
+        }
+        employee.setTitle_id(titleId);
+        employeeRepository.save(employee);
+    }
+
+    @Override
+    public void removeTitle(String jobId) {
+        Employee employee = employeeRepository.findByJobId(jobId);
+        if (employee == null) {
+            throw new RuntimeException("Employee with jobId: " + jobId + " not found");
+        }
+        employee.setTitle_id(null);
+        employeeRepository.save(employee);
+    }
 }

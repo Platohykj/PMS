@@ -15,4 +15,6 @@ public interface TitleService {
     Title updateTitle(Title title);
 
     void deleteTitle(Long id);
+
+    Title getTitleById(Long id);
 }

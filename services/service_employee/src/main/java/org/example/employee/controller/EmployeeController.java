@@ -37,4 +37,29 @@ public class EmployeeController {
         employeeService.updateEmployee(employee);
         return Response.newSuccess(null, "Employee updated successfully");
     }
+    @PutMapping("/clearsubdepartment")
+    public Response<?> clearSubDepartment(@RequestParam("subdepartment") String subdepartment) {
+        employeeService.clearSubDepartment(subdepartment);
+        return Response.newSuccess(null, "Sub-department cleared successfully");
+    }
+    @PutMapping("/clearparentdepartments")
+    public Response<?> clearParentDepartments(@RequestParam("parentDepartment") String parentDepartment) {
+        employeeService.clearParentDepartments(parentDepartment);
+        return Response.newSuccess(null, "Parent departments cleared successfully");
+    }
+    @GetMapping("/getemployeebydepartment")
+    public Response<?> getEmployeeByDepartment(@RequestParam("department") String department) {
+        return Response.newSuccess(employeeService.getEmployeeByDepartment(department), "Employees retrieved by department successfully");
+    }
+    @PutMapping("/updatetitleid")
+    public Response<?> updateTitleId(@RequestParam("jobId") String jobId, @RequestParam("titleId") Long titleId) {
+        employeeService.updateTitleId(jobId, titleId);
+        return Response.newSuccess(null, "Title ID updated successfully");
+    }
+
+    @PutMapping("/removetitle")
+    public Response<?> removeTitle(@RequestParam("jobId") String jobId) {
+        employeeService.removeTitle(jobId);
+        return Response.newSuccess(null, "Title removed successfully");
+    }
 }

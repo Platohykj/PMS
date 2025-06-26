@@ -35,4 +35,13 @@ public class TitleController {
         titleService.deleteTitle(id);
         return Response.newSuccess(null, "Successfully deleted title with ID: " + id);
     }
+
+    @GetMapping("/gettitlebyid")
+    public Title getTitleById(@RequestParam("id") Long id) {
+        Title title = titleService.getTitleById(id);
+        if (title == null) {
+            throw new RuntimeException("Title not found with ID: " + id);
+        }
+        return title;
+    }
 }

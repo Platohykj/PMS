@@ -8,6 +8,8 @@ import org.example.department.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -38,5 +40,50 @@ public class DepartmentServiceImpl implements DepartmentService {
         departmentRepository.delete(department);
     }
 
+    @Override
+    public List<Department> getAllDepartments() {
+        return departmentRepository.findAll();
+    }
 
+    @Override
+    public void deleteParentDepartment(String parentDepartmentName) {
+        if (parentDepartmentName == null || parentDepartmentName.isEmpty()) {
+            throw new IllegalArgumentException("Parent department name cannot be null or empty");
+        }
+        Department parentDepartment = departmentRepository.findByName(parentDepartmentName);
+        if (parentDepartment != null) {
+            departmentRepository.delete(parentDepartment);
+        } else {
+            throw new IllegalArgumentException("Parent department not found: " + parentDepartmentName);
+        }
+        Long parentId = parentDepartment.getId();
+        List<Department> childDepartments = departmentRepository.findByParentId(parentId);
+        departmentRepository.deleteAll(childDepartments);
+    }
+
+    @Override
+    public List<Department> getAllParentDepartments() {
+        List<Department> allDepartments = departmentRepository.findByParentId(0L);
+        if (allDepartments == null || allDepartments.isEmpty()) {
+            throw new IllegalArgumentException("No parent departments found");
+        }
+        return allDepartments;
+    }
+
+    @Override
+    public List<Department> getSubDepartmentsByParentName(String parentDepartmentName) {
+        if (parentDepartmentName == null || parentDepartmentName.isEmpty()) {
+            throw new IllegalArgumentException("Parent department name cannot be null or empty");
+        }
+        Department parentDepartment = departmentRepository.findByName(parentDepartmentName);
+        if (parentDepartment == null) {
+            throw new IllegalArgumentException("Parent department not found: " + parentDepartmentName);
+        }
+        Long parentId = parentDepartment.getId();
+        List<Department> subDepartments = departmentRepository.findByParentId(parentId);
+        if (subDepartments == null || subDepartments.isEmpty()) {
+            throw new IllegalArgumentException("No sub-departments found for parent department: " + parentDepartmentName);
+        }
+        return subDepartments;
+    }
 }

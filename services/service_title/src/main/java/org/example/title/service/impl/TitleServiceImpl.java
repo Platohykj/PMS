@@ -44,4 +44,10 @@ public class TitleServiceImpl implements TitleService {
         }
         titleRepository.deleteById(id);
     }
+
+    @Override
+    public Title getTitleById(Long id) {
+        return titleRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Title not found with ID: " + id));
+    }
 }

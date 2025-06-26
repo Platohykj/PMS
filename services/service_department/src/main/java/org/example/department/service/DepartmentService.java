@@ -3,6 +3,8 @@ package org.example.department.service;
 
 import org.example.department.model.Department;
 
+import java.util.List;
+
 
 public interface DepartmentService {
 
@@ -14,6 +16,13 @@ public interface DepartmentService {
 
     void deleteDepartment(Department department);
 
+    List<Department> getAllDepartments();
+
+    void deleteParentDepartment(String parentDepartmentName);
+
+    List<Department> getAllParentDepartments();
+
+    List<Department> getSubDepartmentsByParentName(String parentDepartmentName);
 }
 
 

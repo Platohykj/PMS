@@ -34,3 +34,15 @@ spring:
           uri: lb://service-title
           predicates:
             - Path=/api/db/title/**
+        - id: Departmentapi-route
+          uri: lb://service-departmentapi
+          predicates:
+            - Path=/api/department/**
+        - id: Positionapi-route
+          uri: lb://service-positionapi
+          predicates:
+            - Path=/api/position/**
+        - id: Titleapi-route
+          uri: lb://service-titleapi
+          predicates:
+            - Path=/api/title/**

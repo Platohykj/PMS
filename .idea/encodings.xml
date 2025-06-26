@@ -5,15 +5,19 @@
     <file url="file://$PROJECT_DIR$/model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/response/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/login/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/service_api_department/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_department/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/service_departmentapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_employee/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_login/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_modification/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_position/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/service_positionapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_register/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_salary/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_salaryset/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_title/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/service_titleapi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/service_user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/src/main/resources" charset="UTF-8" />
