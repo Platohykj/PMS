@@ -1,7 +1,6 @@
 package org.example.user;
 
 import com.alibaba.cloud.nacos.NacosConfigManager;
-import com.alibaba.cloud.nacos.annotation.NacosConfig;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import org.springframework.boot.ApplicationRunner;

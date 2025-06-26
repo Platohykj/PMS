@@ -12,7 +12,14 @@
     <packaging>pom</packaging>
     <modules>
         <module>service_user</module>
-        <module>service_login</module>
+        <module>service_register</module>
+        <module>service_employee</module>
+        <module>service_department</module>
+        <module>service_position</module>
+        <module>service_modification</module>
+        <module>service_salary</module>
+        <module>service_salaryset</module>
+        <module>service_title</module>
     </modules>
     <dependencyManagement>
         <dependencies>
@@ -65,6 +72,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>

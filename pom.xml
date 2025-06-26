@@ -12,6 +12,8 @@
     <modules>
         <module>services</module>
         <module>model</module>
+        <module>gateway</module>
+        <module>response</module>
     </modules>
     <groupId>org.example</groupId>
     <artifactId>cloud_demo</artifactId>

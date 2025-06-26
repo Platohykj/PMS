@@ -1,0 +1,13 @@
+server:
+  port: 3000
+spring:
+  application:
+    name: service-salary
+  cloud:
+    nacos:
+      server-addr: 192.168.0.133:8848
+
+
+  config:
+    import:
+        - nacos:service_salary.properties

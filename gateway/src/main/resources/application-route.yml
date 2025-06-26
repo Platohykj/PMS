@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: Employee-route
+          uri: lb://service-employee
+          predicates:
+            - Path=/api/db/employee/**
+        - id: User-route
+          uri: lb://service-user
+          predicates:
+            - Path=/api/db/user/**
+        - id: Department-route
+          uri: lb://service-department
+          predicates:
+            - Path=/api/db/department/**
+        - id: Position-route
+          uri: lb://service-position
+          predicates:
+            - Path=/api/db/position/**
+        - id: Modification-route
+          uri: lb://service-modification
+          predicates:
+            - Path=/api/db/modification/**
+        - id: Salary-route
+          uri: lb://service-salary
+          predicates:
+            - Path=/api/db/salary/**
+        - id: SalarySet-route
+          uri: lb://service-salaryset
+          predicates:
+            - Path=/api/db/salaryset/**
+        - id: Title-route
+          uri: lb://service-title
+          predicates:
+            - Path=/api/db/title/**

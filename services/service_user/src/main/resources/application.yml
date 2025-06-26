@@ -2,7 +2,7 @@ server:
   port: 8000
 spring:
   application:
-    name: service_user
+    name: service-user
   cloud:
     nacos:
       server-addr: 192.168.0.133:8848
