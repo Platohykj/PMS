@@ -1,0 +1,12 @@
+server:
+  port: 6000
+spring:
+  application:
+    name: service-department
+  cloud:
+    nacos:
+      server-addr: 192.168.0.133:8848
+
+  config:
+    import:
+      - nacos:service_department.properties
